@@ -2,7 +2,7 @@
 const letraA = /^(?=[HhMm]+)((HM)|(MH))(mm+|h+|hhm+)(h|m)*$/
 
 //Expressão Regular para a letra B
-const letraB = /^(?=[HhMm]+)((HM)|(MH))(?:h*([m]h*[m])*[m])$/
+const letraB = /^(?=[HhMm]+)((HM)|(MH))(?:h*([m]h*[m]h*?)*[m]h*?)$/
 
 //Expressão Regular para a letra C
 const letraC = /^(?=[HhMm]+)((HM)|(MH))m(h|m)*h$/
@@ -19,12 +19,18 @@ const letraF = /^(?=[HhMm]+)(?!.*hh)((HH)|(MM))(m|h(mh)*)*$/
 
 
 //Exemplos de Cadeias
-const testeLetraA = ['HMmm', 'MHmm', 'HMh', 'HMhh', 'HMhhm', 'MHhmh', 'MMmm', 'HHmm', 'Hmm', 'Mhm', 'HMm'];
-const testeLetraB = ['HMmmm', 'MHmmm', 'HMm', 'HMhhhhmmmmm', 'MHmhmm', 'HMhhmmm', 'HMmm'];
-const testeLetraC = ['HMmh', 'HMmm', 'HMhm', 'HMmhmhmhmhmhmh', 'MHmmmmmhhhhhhh', 'HM'];
-const testeLetraD = ['HHmhhmhm', 'MMhmmhhm', 'HMmhhmhm', 'HHmh', 'MMhmmmmmmmmmmmmmh', 'HHmhhhhhhhmmmmmmhhhhhm'];
-const testeLetraE = ['HHm', 'MMm', 'HHh', 'MMh','HHhmhmhmhmhmh', 'MMhmhmhmhmhmhm', 'MMmhmhmhmhm', 'HHhmhmhmhmhmh', 'HHhmhmhmmhmhm'];
-const testeLetraF = ['HHhm', 'HH', 'MM', 'HHhmmmmmhmmmmmh', 'MMmhmhmmmmhh'];
+const testeLetraA = ['HMmm', 'MHmm', 'HMh', 'MHh', 'HMhh', 'HMhhm', 'MHhmh', 'HMhhmm', 'HMmmmmh', 'MHhhmmmmmm', 'HMhhmmmm', 'MHhm', 'MHhhmhh', 'HMmmh', 'HMhhhmhmm',
+                    'HHmm', 'MMmm','Hmm', 'Mhm', 'HMm', 'H', 'M', 'HmM', 'HhMm', 'Mhh', 'HhhhhM', 'Hhmmmmh', 'Mhhmmmm', 'MhhMh', 'HmMhm'];
+const testeLetraB = ['HMmmm', 'MHmmm', 'HMm', 'HMhhhhmmmmm', 'MHmhmm', 'HMhhmmm', 'MHhm', 'HMhmhmmh', 'MHmhhhhhhh', 'HMhmhmhmh', 'HMmh', 'HMhhhhm', 'MHhhhmhhh', 'HMmmhmmm', 'MHmhh',
+                    'HMmm', 'HMhmm', 'HMhmhmmhm', 'HHmmm', 'MMmmm', 'HMhmhm', 'MHhhmm', 'HMmmmmh', 'Hm', 'Mm', 'HMmmmHmm', 'MHHmmm','HMmmh', 'H', 'M'];
+const testeLetraC = ['HMmh', 'HMmhmhmhmhmhmh', 'MHmmmmmhhhhhhh',  'HMmmmmmmh', 'HMmmmmhmmmmmh', 'HMmmhh','HMmhhh', 'MHmmhmhmhh', 'HMmhmh', 'HMmmhmmh',
+                    'HMmm', 'HMhm', 'HMhh', 'HHmh', 'MMmh', 'HMhmhmhm', 'HMhmmh', 'HMhmmmhhhm', 'HMhhhhmmmm', 'MH', 'HM'];
+const testeLetraD = ['HHmhhmhm', 'MMhmmhhm', 'MMhmmmmmmmmmmmmmh', 'HHmhhhhhhhmmmmmmhhhhhm', 'MMhmhmhm', 'HHmhmhmh', 'MMmhhmmh', 'HHmhhhmmh', 'MMhmmmhm', 'HHmhmmhm',
+                    'HMmhhmhm', 'HHmh', 'MMmhmh', 'HHhmhmhh', 'MMmhhmmm', 'HHmmhmhm', 'MMhmmhHm', 'HHmhm', 'MMhmhmm', 'HHmhmhh'];
+const testeLetraE = ['HHm', 'MMm', 'HHh', 'MMh', 'HHhm', 'HHmh','HHhmhmhmh', 'MMhmhmhmhm', 'MMmhmhmhmhm', 'HHmhm', 'MMhmh',
+                    'HMmh', 'MHmh', 'HHhmhmhmhh', 'HHhmhmhmmhmhm', 'HHmhhm', 'MMhmhmm', 'MMhh', 'HHmm', 'MMhmmh', 'HHmhmhh'];
+const testeLetraF = ['HHhm', 'HH', 'MM', 'HHm', 'HHh', 'MMh', 'HHhmhmmhmmh', 'MMmhmmmh', 'HHmmhmm', 'MMmhmmm', 
+                    'MMmhmhmmmmhh', 'HMh', 'HHhh', 'MMhh', 'HHmhmhh', 'MMhmmhhmh', 'HHmmmhh', 'MMmhh', 'HHmhh', 'MMhhm'];
 
 
 //Processo de Testes
@@ -71,7 +77,8 @@ switch((process.argv[2]).toUpperCase()){
 
         const letraG = new RegExp(`^(?=[HhMm]+)[HM]{${x},${y}}((h|m)*mmm)?$`);
 
-        const testeLetraG = ['HHMHhhmmmm'];
+        const testeLetraG = ['HHhhmmmm', 'HHMhmmm', 'HHMMmmm', 'HMMMMhhhmmm', 'HHHHMMhmmm', 'HHHMMMHhmhmmm', 
+                            'HHMMMMMMmhmmm', 'MHMHMHMHMhmmm', 'HHMMHHMMHHhhmmm' ];
         
         console.log('\nVerificação da Letra G:');
         for (const teste of testeLetraG) {
