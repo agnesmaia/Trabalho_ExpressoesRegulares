@@ -67,4 +67,6 @@ switch((process.argv[2]).toUpperCase()){
             console.log(teste, numeroRealRegex.test(teste));
         }
         break
+    default:
+        console.log("Passe um dos argumentos a seguir NOME, EMAIL, SENHA, CPF, DATA ou NUMERO")
 }
