@@ -16,19 +16,25 @@ const letraE = /^(?=[HhMm]+)((HH)|(MM))((hm)*h?|(mh)*m?)$/
 //Expressão Regular para a letra F
 const letraF = /^(?=[HhMm]+)(?!.*hh)((HH)|(MM))(m|h(mh)*)*$/
 
-
+//Expressão Regular para a letra G
+const letraG = new RegExp(`^(?=[HhMm]+)[HM]{${x},${y}}((h|m)*mmm)?$`);
 
 //Exemplos de Cadeias
 const testeLetraA = ['HMmm', 'MHmm', 'HMh', 'MHh', 'HMhh', 'HMhhm', 'MHhmh', 'HMhhmm', 'HMmmmmh', 'MHhhmmmmmm', 'HMhhmmmm', 'MHhm', 'MHhhmhh', 'HMmmh', 'HMhhhmhmm',
                     'HHmm', 'MMmm','Hmm', 'Mhm', 'HMm', 'H', 'M', 'HmM', 'HhMm', 'Mhh', 'HhhhhM', 'Hhmmmmh', 'Mhhmmmm', 'MhhMh', 'HmMhm'];
+
 const testeLetraB = ['HMmmm', 'MHmmm', 'HMm', 'HMhhhhmmmmm', 'MHmhmm', 'HMhhmmm', 'MHhm', 'HMhmhmmh', 'MHmhhhhhhh', 'HMhmhmhmh', 'HMmh', 'HMhhhhm', 'MHhhhmhhh', 'HMmmhmmm', 'MHmhh',
                     'HMmm', 'HMhmm', 'HMhmhmmhm', 'HHmmm', 'MMmmm', 'HMhmhm', 'MHhhmm', 'HMmmmmh', 'Hm', 'Mm', 'HMmmmHmm', 'MHHmmm','HMmmh', 'H', 'M'];
+
 const testeLetraC = ['HMmh', 'HMmhmhmhmhmhmh', 'MHmmmmmhhhhhhh',  'HMmmmmmmh', 'HMmmmmhmmmmmh', 'HMmmhh','HMmhhh', 'MHmmhmhmhh', 'HMmhmh', 'HMmmhmmh',
                     'HMmm', 'HMhm', 'HMhh', 'HHmh', 'MMmh', 'HMhmhmhm', 'HMhmmh', 'HMhmmmhhhm', 'HMhhhhmmmm', 'MH', 'HM'];
+
 const testeLetraD = ['HHmhhmhm', 'MMhmmhhm', 'MMhmmmmmmmmmmmmmh', 'HHmhhhhhhhmmmmmmhhhhhm', 'MMhmhmhm', 'HHmhmhmh', 'MMmhhmmh', 'HHmhhhmmh', 'MMhmmmhm', 'HHmhmmhm',
                     'HMmhhmhm', 'HHmh', 'MMmhmh', 'HHhmhmhh', 'MMmhhmmm', 'HHmmhmhm', 'MMhmmhHm', 'HHmhm', 'MMhmhmm', 'HHmhmhh'];
+                    
 const testeLetraE = ['HHm', 'MMm', 'HHh', 'MMh', 'HHhm', 'HHmh','HHhmhmhmh', 'MMhmhmhmhm', 'MMmhmhmhmhm', 'HHmhm', 'MMhmh',
                     'HMmh', 'MHmh', 'HHhmhmhmhh', 'HHhmhmhmmhmhm', 'HHmhhm', 'MMhmhmm', 'MMhh', 'HHmm', 'MMhmmh', 'HHmhmhh'];
+                    
 const testeLetraF = ['HHhm', 'HH', 'MM', 'HHm', 'HHh', 'MMh', 'HHhmhmmhmmh', 'MMmhmmmh', 'HHmmhmm', 'MMmhmmm', 
                     'MMmhmhmmmmhh', 'HMh', 'HHhh', 'MMhh', 'HHmhmhh', 'MMhmmhhmh', 'HHmmmhh', 'MMmhh', 'HHmhh', 'MMhhm'];
 
@@ -74,7 +80,7 @@ switch((process.argv[2]).toUpperCase()){
     case 'G':
         x = Number(process.argv[3])
         y = Number(process.argv[4])
-
+        
         const letraG = new RegExp(`^(?=[HhMm]+)[HM]{${x},${y}}((h|m)*mmm)?$`);
 
         const testeLetraG = ['HHhhmmmm', 'HHMhmmm', 'HHMMmmm', 'HMMMMhhhmmm', 'HHHHMMhmmm', 'HHHMMMHhmhmmm', 
