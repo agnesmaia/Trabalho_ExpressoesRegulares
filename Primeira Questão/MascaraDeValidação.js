@@ -28,11 +28,14 @@ const testesEmail = ['a@a.br', 'divulga@ufpa.br', 'a@a.com.br', '@', 'a@.br', '@
                     '@a','agnes.com', 'livia.emanuelle@icen.ufpa.br' ];
 const testeSenhas = ['518R2r5e', 'F123456A', '1234567T', 'ropsSoq0', 'F1234567A', 'abcdefgH', '1234567HI', '567567Pa7', 'AGNES123', 'Agnes123', 'ANDREYA',
                     'ANDreya12Paiva', 'Andreya8', 'Livia12', 'Livia123'];
-const testeCpf = ['123.456.789-09', '019.004.692-94', '1', '01900469294', '000.000.000-00', '123.456.789-0', '111.111.11-11']
-const testeTelefone = ['(12)', '(91) 99999-9999', '(91) 999999999','91 999999999', '(91) 59999-9999', '99 99999-9999', '(94)95555-5555'];
-const testeDataHorario = ['31/08/2019 20:14:55', '99/99/9999 23:59:59', '99/99/9999 3:9:9', '9/9/99 99:99:99', '99/99/999903:09:09', '17/02/2004 25:53:59', '17/02/2004 24:53:59', '17/02/2004 22:61:70', '17/02/2004 13:53:59'];
-const testeNumeroReal = ['-25.467', '1', '-1', '+1', '64.2', '1.', '.2', '+64,2'];
-
+const testeCpf = ['123.456.789-09', '019.004.692-94', '1', '01900469294', '000.000.000-00', '123.456.789-0', '111.111.11-11',
+                 '019.004.692-94', '056.186.102-13', '1234', '1.2.3-4', '00.00-0', '123.456.789']
+const testeTelefone = ['(12)', '(91) 99999-9999', '(91) 999999999','91 999999999', '(91) 59999-9999', '99 99999-9999', '(94)95555-5555', 
+                       '(91) 98566-5787', '91 985665787', '(91) 985665787'];
+const testeDataHorario = ['31/08/2019 20:14:55', '99/99/9999 23:59:59', '99/99/9999 3:9:9', '9/9/99 99:99:99', '99/99/999903:09:09', 
+                          '17/02/2004 25:53:59', '17/02/2004 24:53:59', '17/02/2004 22:61:70', '17/02/2004 13:53:59'];
+const testeNumeroReal = ['-25.467', '1', '-1', '+1', '64.2', '1.', '.2', '+64,2',
+                        '23', '-247','+5', '1.2.', '1..0', '3.0', '3,0', '45.5'];
 
 //Processo de testes 
 switch((process.argv[2]).toUpperCase()){
@@ -60,6 +63,12 @@ switch((process.argv[2]).toUpperCase()){
             console.log(teste, cpfRegex.test(teste));
         }
         break
+    case 'TELEFONE':
+        console.log('\nValidação de telefone:');
+        for (const teste of testeTelefone) {
+            console.log(teste, telefoneRegex.test(teste));
+        }
+        break
     case 'DATA':
         console.log('\nValidação de Data e Horario:');
         for (const teste of testeDataHorario) {
@@ -73,5 +82,5 @@ switch((process.argv[2]).toUpperCase()){
         }
         break
     default:
-        console.log("Passe um dos argumentos a seguir NOME, EMAIL, SENHA, CPF, DATA ou NUMERO")
+        console.log("Passe um dos argumentos a seguir NOME, EMAIL, SENHA, CPF, TELEFONE, DATA ou NUMERO")
 }
